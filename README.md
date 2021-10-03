@@ -12,4 +12,4 @@ Katarina Alves
 Thalita Nicoly
 Wellington Pereira
 
-O link para a aplicação em execução no Heroku:
+O link para a aplicação em execução no Heroku: https://gentle-refuge-92590.herokuapp.com/
