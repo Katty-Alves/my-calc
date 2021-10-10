@@ -70,7 +70,7 @@ height: 25px;
 <td><input type="button" class="btnNum" value="5" onclick="addChar(this.form.display, '5')"></td>
 <td><input type="button" class="btnNum" value="6" onclick="addChar(this.form.display, '6')"></td>
 <td><input type="button" class="btnNum" value="*" onclick="addChar(this.form.display, '*')"></td>
-<td rowspan="5"><input type="button" class="botao" style= "height: 180px" value="=" onclick="if(checkNum(this.form.display.value)) { compute(this.form) }"></td>
+<td rowspan="5"><input type="button" class="botao" style= "height: 180px" name="btnTop" value="=" onclick="if(checkNum(this.form.display.value)) { compute(this.form) }"></td>
 
 </tr>
 
@@ -89,6 +89,7 @@ height: 25px;
     </tr>
 
     <tr>
+        <td><input type="button" class="btnNum" value="x&sup2" onclick="if(checkNum(this.form.display.value)) { square(this.form) }"></td>
         <td><input type="button" class="btnNum" value="%" onclick=" percent(this.form.display)"></td>
     </tr>
 
@@ -135,3 +136,4 @@ return true
 </script>
 </body>
 </html>
+
