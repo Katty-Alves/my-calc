@@ -94,7 +94,9 @@ height: 25px;
         <td><input type="button" class="btnNum" value="(" onclick="addChar(this.form.display, '(')"></td>
         <td><input type="button" class="btnNum" value=")" onclick="addChar(this.form.display,')')"></td>
     </tr>
-
+   <tr>
+    <td><input type="button" class="btnNum" name="btnOpps" value="√" onclick="if(checkNum(this.form.display.value)) { sqrt(this.form) }"></td>
+   </tr>
 
 </table>
 </form>
@@ -128,6 +130,10 @@ form.display.value = eval(form.display.value);
 
 function square(form) {
 form.display.value = eval(form.display.value) * eval(form.display.value)
+}
+
+function sqrt(form) {
+form.display.value = Math.sqrt(form.display.value);
 }
 
 function checkNum(str) {
