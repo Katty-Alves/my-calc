@@ -47,22 +47,48 @@ width: 50px;
 height: 25px;
 }
 
+#outHistorico{
+          
+          background-color: #ececec;
+          width: 239px;
+          height: 369px;
+          border-radius: 7px;
+          position: absolute;
+          left: 65%;
+          top: 100px;
+        }
+        
+        #Historico{
+          
+          position: absolute;
+          left: 85px;
+           top: 10px;
+        }
 
 </style>
 </head>
 <body>
-<form name="sci-calc">
+
+    <div >
+        <h4 id="outHistorico"><span id="Historico">Histórico</span></h4>
+     </div>
+
+<form name="calc">
 <table class="calculator" cellspacing="0" cellpadding="3">
-<tr>
-<td colspan="5"><input id="display" name="display" value="0" size="28" maxlength="25"></td>
-</tr>
+
+
+ 
+
+        <td colspan="5"><input type="text" id="display" value="0" class="resultado" size="28" maxlength="25">
 
 <tr>
+    
     <td><input type="button" class="btnNum" value="C" onclick="deleteChar(this.form.display.value= 0)"></td>
     <td><input type="button" class="btnNum" name="btnTop" value="<--" onclick="deleteChar(this.form.display)"></td>
     <td><input type="button" class="btnNum" name="btnOpps" value="√" onclick="if(checkNum(this.form.display.value)) { sqrt(this.form) }"></td>
     <td><input type="button" class="btnNum" value="x&sup2" onclick="if(checkNum(this.form.display.value)) { square(this.form) }"></td>
-    <td><input type="button" class="btnNum" value="%" onclick=" percent(this.form.display)"></td>
+    <td><input type="button" class="btnNum" value="%" onclick="atualizarDisplay('/100')"></td>
+
 </tr>
 
    <tr>
@@ -97,7 +123,7 @@ height: 25px;
     </tr>
 
     <tr>
-               
+        <td><button class= "botao" id="Lipar" onclick="limparHistorico()">⎚</button></td>    
         <td><input type="button" class="btnNum" value="(" onclick="addChar(this.form.display, '(')"></td>
         <td><input type="button" class="btnNum" value=")" onclick="addChar(this.form.display,')')"></td>
     </tr>
@@ -106,6 +132,11 @@ height: 25px;
 </table>
 </form>
 <script>
+
+function atualizarDisplay(num){ 
+var  salvo= document.calc.display.value;
+document.calc.display.value = salvo + num ; 
+}
 
 function addChar(input, character) {
 if(input.value == null || input.value == "0")
@@ -141,6 +172,22 @@ function sqrt(form) {
 form.display.value = Math.sqrt(form.display.value);
 }
 
+function limparHistorico(){
+document.getElementById('outHistorico').innerHTML = "";
+                }
+
+        function calcularOperacao(){ 
+             var resul = 0;
+             resul = document.getElementById('display').value;  
+             var result2 = document.getElementById('display').value = eval (resul);
+            var textoHistorico = "";
+            outHistorico = document.getElementById("historico");
+  textoHistorico = resul + "= " + result2 + "\n";
+  outHistorico.textContent += textoHistorico
+        
+  
+        }
+
 function checkNum(str) {
 for (var i = 0; i < str.length; i++) {
 var ch = str.charAt(i);
@@ -154,8 +201,6 @@ return false
 }
 return true
 }
-
-
 
 </script>
 </body>
