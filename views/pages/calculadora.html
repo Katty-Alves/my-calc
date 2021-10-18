@@ -1,9 +1,13 @@
+<!--% não pega e ajeitar corpo-->
+
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Calculadora</title>
     <meta charset="utf-8" />
-<style> table{
+
+    <style>
+     table{
     text-align: center;
     margin: auto;
     padding: 25px;
@@ -51,149 +55,117 @@ height: 25px;
           
           background-color: #ececec;
           width: 239px;
-          height: 369px;
+          height: 300px;
           border-radius: 7px;
           position: absolute;
           left: 65%;
-          top: 100px;
+          top: 1px;
         }
         
-        #Historico{
-          
-          position: absolute;
-          left: 85px;
-           top: 10px;
+        .historico{
+            position: absolute;
+            background-color:  #CCCCCC;
+            
+top: 50%;
+left: 50%;
+transform: translate(50%);
+border-radius: 15px;
+padding: 20px;
         }
 
 </style>
-</head>
-<body>
-
-    <div >
-        <h4 id="outHistorico"><span id="Historico">Histórico</span></h4>
-     </div>
-
-<form name="calc">
+  </head>
+  <body>
 <table class="calculator" cellspacing="0" cellpadding="3">
-
-
- 
-
-        <td colspan="5"><input type="text" id="display" value="0" class="resultado" size="28" maxlength="25">
-
-<tr>
-    
-    <td><input type="button" class="btnNum" value="C" onclick="deleteChar(this.form.display.value= 0)"></td>
-    <td><input type="button" class="btnNum" name="btnTop" value="<--" onclick="deleteChar(this.form.display)"></td>
-    <td><input type="button" class="btnNum" name="btnOpps" value="√" onclick="if(checkNum(this.form.display.value)) { sqrt(this.form) }"></td>
-    <td><input type="button" class="btnNum" value="x&sup2" onclick="if(checkNum(this.form.display.value)) { square(this.form) }"></td>
-
+<tr>               
+     <td left: 300px><p class="historico" id="outHistorico" disabled>HISTÓRICO: <br></p></td>
 </tr>
+            <tr>  
+                <td colspan="6"><p class="in_text" id="display" value="0" disabled>0</p></td>
+                        </tr>
 
-   <tr>
-    <td><input type="button" class="btnNum" value="7" onclick="addChar(this.form.display, '7')"></td>
-    <td><input type="button" class="btnNum" value="8" onclick="addChar(this.form.display, '8')"></td>
-    <td><input type="button" class="btnNum"  value="9" onclick="addChar(this.form.display, '9')"></td>
-    <td><input type="button" class="btnNum" value="/" onclick="addChar(this.form.display, '/')"></td>
-    
-</tr>
+            <tr>
+                <td><input type="button" class="btnNum" value="C" onclick="limparDisplay()" /></td>
+                <td><input type="button" class="btnNum" value="<--" onclick="desfazerDisplay()" /></td>
+                <td><input type="button" class="btnNum" value="√" onclick="calcularRaiz()" /></td>
+                <td><input type="button" class="btnNum" value="x²" onclick="atualizarDisplay('**2')" /></td>
+                <td rowspan="5"><input type="button" class="botao" style= "height: 180px" value="=" onclick="calcularOperacao()" /></td>
+            </tr>
 
-<tr>
-<td><input type="button" class="btnNum" value="4" onclick="addChar(this.form.display, '4')"></td>
-<td><input type="button" class="btnNum" value="5" onclick="addChar(this.form.display, '5')"></td>
-<td><input type="button" class="btnNum" value="6" onclick="addChar(this.form.display, '6')"></td>
-<td><input type="button" class="btnNum" value="*" onclick="addChar(this.form.display, '*')"></td>
-<td rowspan="5"><input type="button" class="botao" style= "height: 180px" name="btnTop" value="=" onclick=" compute(this.form)"></td>
+            <tr>
+                <td><input type="button" class="btnNum" value="7" onclick="atualizarDisplay('7')" /></td>
+                <td><input type="button" class="btnNum" value="8" onclick="atualizarDisplay('8')" /></td>
+                <td><input type="button" class="btnNum" value="9" onclick="atualizarDisplay('9')" /></td>
+                <td><input type="button" class="btnNum" value="/" onclick="atualizarDisplay('/')" /></td>
+            </tr>
 
-</tr>
+            <tr>
+                <td><input type="button" class="btnNum" value="4" onclick="atualizarDisplay('4')" /></td>
+                <td><input type="button" class="btnNum" value="5" onclick="atualizarDisplay('5')" /></td>
+                <td><input type="button" class="btnNum" value="6" onclick="atualizarDisplay('6')" /></td>
+                <td><input type="button" class="btnNum" value="*" onclick="atualizarDisplay('*')" /></td>
+            </tr>
+            
+            <tr>
+                <td><input type="button" class="btnNum" value="1" onclick="atualizarDisplay('1')" /></td>
+                <td><input type="button" class="btnNum" value="2" onclick="atualizarDisplay('2')" /></td>
+                <td><input type="button" class="btnNum" value="3" onclick="atualizarDisplay('3')" /></td>
+                <td><input type="button" class="btnNum" value="-" onclick="atualizarDisplay('-')" /></td>
+            </tr>
 
-<tr>
-    <td><input type="button" class="btnNum" value="1" onclick="addChar(this.form.display, '1')"></td>
-    <td><input type="button" class="btnNum" value="2" onclick="addChar(this.form.display, '2')"></td>
-    <td><input type="button" class="btnNum" value="3" onclick="addChar(this.form.display, '3')"></td>
-    <td><input type="button" class="btnNum" value="-" onclick="addChar(this.form.display, '-')"></td>
-    </tr>
+            <tr>
+                <td><input type="button" class="btnNum" value="&#177" onclick="changeSign(this.form.display)"></td>
+                <td><input type="button" class="btnNum" value="0" onclick="atualizarDisplay('0')" /></td>
+                <td><input type="button" class="btnNum" value="." onclick="atualizarDisplay('.')" /></td>
+                <td><input type="button" class="btnNum" value="+" onclick="atualizarDisplay('+')" /></td>
+            </tr>
 
-    <tr>
-        <td><input type="button" class="btnNum" value="&#177" onclick="changeSign(this.form.display)"></td>
-        <td><input type="button" class="btnNum" value="0" onclick="addChar(this.form.display, '0')"></td>
-        <td><input type="button" class="btnNum" value="." onclick="addChar(this.form.display, '.')"></td>
-        <td><input type="button" class="btnNum" value="+" onclick="addChar(this.form.display, '+')"></td>
-    </tr>
+            <tr>
+                <td><input type="button" class="btnNum" value="🗑️" onclick="limparHistorico()" /></td>
+                <td><input type="button" class="btnNum" value="(" onclick="atualizarDisplay('(')" /></td>
+                <td><input type="button" class="btnNum" value=")" onclick="atualizarDisplay(')')" /></td>
+                <td><input type="button" class="btnNum" value="%" onclick="atualizarDisplay('/100')"></td>
+            </tr>
 
-    <tr>
-        <td><button class= "botao" id="Lipar" onclick="limparHistorico()">⎚</button></td>    
-        <td><input type="button" class="btnNum" value="(" onclick="addChar(this.form.display, '(')"></td>
-        <td><input type="button" class="btnNum" value=")" onclick="addChar(this.form.display,')')"></td>
-        <td><input type="button" class="btnNum" value="%" onclick="atualizarDisplay('/100')"></td>
-    </tr>
-   
+            
 
-</table>
-</form>
-<script>
+        </table>
+    </div>
+      <script>
+        function atualizarDisplay(num){
+            var display = document.getElementById('display').innerHTML;
+            if(display === '0') document.getElementById('display').innerHTML = num;
+            else document.getElementById('display').innerHTML += num
+        }
+        function desfazerDisplay() {
+            var display = document.getElementById('display').innerHTML;
+            document.getElementById('display').innerHTML = display.substring(0, display.length - 1);
+        }
+        function limparDisplay(){
+            document.getElementById('display').innerHTML = "0";
+        }
+        function limparHistorico(){
+            document.getElementById('outHistorico').innerHTML = "HISTÓRICO: <br>";
+        }
+        var historico = ''
+        function calcularOperacao(){
+            var display = document.getElementById('display').innerHTML;
+            var historico = document.getElementById('display').innerHTML;
+            if (display) {
+                document.getElementById('display').innerHTML = eval(display);
+            }
+            document.getElementById('outHistorico').innerHTML += historico + '=' + eval(display) + "<br>";
+        }
+        function calcularRaiz(){
+            var display = document.getElementById('display').innerHTML;
+            var historico = document.getElementById('display').innerHTML;
+            if (display) {
+                document.getElementById('display').innerHTML = Math.sqrt(eval(display));
+                
+            }
+            document.getElementById('outHistorico').innerHTML += '√(' + historico + ') =' + Math.sqrt(eval(display)) + "<br>";
+        }
+    </script>
 
-function atualizarDisplay(num){ 
-var  salvo= document.calc.display.value;
-document.calc.display.value = salvo + num ; 
-}
-
-function addChar(input, character) {
-if(input.value == null || input.value == "0")
-input.value = character
-else
-input.value += character
-}
-
-function deleteChar(input) {
-input.value = input.value.substring(0, input.value.length - 1)
-}
-
-function percent(input) {
-input.value =  input.value /100;
-}
-
-function changeSign(input) {
-if(input.value.substring(0, 1) == "-")
-input.value = input.value.substring(1, input.value.length)
-else
-input.value = "-" + input.value
-}
-
-var teste;
-function compute(form) {
-form.display.value = eval(form.display.value);
-var teste = document.getElementById('outHistorico').innerHTML = (form.display.value);
-
-}
-
-function square(form) {
-form.display.value = eval(form.display.value) * eval(form.display.value)
-}
-
-function sqrt(form) {
-form.display.value = Math.sqrt(form.display.value);
-}
-
-function limparHistorico(){
-document.getElementById('outHistorico').innerHTML = "";
-                }
-
-
-function checkNum(str) {
-for (var i = 0; i < str.length; i++) {
-var ch = str.charAt(i);
-if (ch < "0" || ch > "9") {
-if (ch != "/" && ch != "*" && ch != "+" && ch != "-" && ch != "."
-&& ch != "(" && ch!= ")" && ch != "%") {
-alert("invalid entry!")
-return false
-}
-}
-}
-return true
-}
-
-</script>
-</body>
+  </body>
 </html>
