@@ -88,7 +88,11 @@ padding: 20px;
                 <td><input type="button" class="btnNum" value="C" onclick="limparDisplay()" /></td>
                 <td><input type="button" class="btnNum" value="<--" onclick="desfazerDisplay()" /></td>
                 <td><input type="button" class="btnNum" value="√" onclick="calcularRaiz()" /></td>
+<<<<<<< HEAD
+                <td><input type="button" class="btnNum" value="x²" onclick="doiselevado('x&sup2')" /></td>
+=======
                 <td><input type="button" class="btnNum" value="x²" onclick="atualizarDisplay('**2')" /></td>
+>>>>>>> 4dfeda94ceda5a684bc4fd36e4ddcd733f0c5dd4
                 <td rowspan="5"><input type="button" class="botao" style= "height: 180px" value="=" onclick="calcularOperacao()" /></td>
             </tr>
 
@@ -165,6 +169,7 @@ padding: 20px;
             }
             document.getElementById('outHistorico').innerHTML += '√(' + historico + ') =' + Math.sqrt(eval(display)) + "<br>";
         }
+<<<<<<< HEAD
 		
 		 function percent(){
             var display = document.getElementById('display').innerHTML;
@@ -175,7 +180,29 @@ padding: 20px;
             }
             document.getElementById('outHistorico').innerHTML += '%' + eval(display)/100 + "<br>";
         }
+=======
+<<<<<<< HEAD
+
+        function doiselevado(){
+            var display = document.getElementById('display').innerHTML;
+            var historico = document.getElementById('display').innerHTML;
+            if (display) {
+                document.getElementById('display').innerHTML = eval(display) * eval(display);
+                
+            }
+            document.getElementById('outHistorico').innerHTML +=  eval(display) * eval(display) + "<br>";
+        }
+
+        
+
     </script>
 
   </body>
 </html>
+=======
+>>>>>>> c6d90c58b14d6f9c508f8a1dc7fdf0ecefe5060f
+    </script>
+
+  </body>
+</html>
+>>>>>>> 4dfeda94ceda5a684bc4fd36e4ddcd733f0c5dd4
