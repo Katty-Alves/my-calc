@@ -124,7 +124,7 @@ padding: 20px;
                 <td><input type="button" class="btnNum" value="🗑️" onclick="limparHistorico()" /></td>
                 <td><input type="button" class="btnNum" value="(" onclick="atualizarDisplay('(')" /></td>
                 <td><input type="button" class="btnNum" value=")" onclick="atualizarDisplay(')')" /></td>
-                <td><input type="button" class="btnNum" value="%" onclick="atualizarDisplay('/100')"></td>
+                <td><input type="button" class="btnNum" value="%" onclick="percent()"></td>
             </tr>
 
             
@@ -164,6 +164,16 @@ padding: 20px;
                 
             }
             document.getElementById('outHistorico').innerHTML += '√(' + historico + ') =' + Math.sqrt(eval(display)) + "<br>";
+        }
+		
+		 function percent(){
+            var display = document.getElementById('display').innerHTML;
+            var historico = document.getElementById('display').innerHTML;
+            if (display) {
+                document.getElementById('display').innerHTML = eval(display)/100;
+                
+            }
+            document.getElementById('outHistorico').innerHTML += '%' + eval(display)/100 + "<br>";
         }
     </script>
 
